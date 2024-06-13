@@ -7,6 +7,10 @@ const app = express();
 
 const port = 5000;     //server port
 
+// middleware
+
+app.use(express.json());                       //data goes from this and this converts jason or other to java script
+
 app.use('/user', UserRouter);
 
 // route or endpoint 
