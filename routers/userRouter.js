@@ -17,9 +17,67 @@ router.post('/add', (req,res) => {
         res.status(500).json(err);
     });
 });
+
+
 router.get('/getall', (req, res) => {
-    res.send('Response from user getall');
+    
+
+    Model.find()
+    .then((result) => {
+        res.status(200).json(result)
+        
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err)
+        
+    });
 });
+
+
+//:denotes url parameter
+router.get('/getbycity/:city',(req,res) => {
+    console.log(req.params.city);
+
+    Model.find( {city : req.params.city })
+
+        .then((result) => {
+            res.status(200).json(result)
+
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err)
+
+        });
+} )     
+
+
+router.get('/getbyemail/:email', (req, res) => {
+
+    Model.findOne({ email: req.params.email })                
+        .then((result) => {
+            res.status(200).json(result)
+
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err)
+
+        });
+})
+
+
+router.get('/getbyid/:id', (req, res) => {
+    Model.findById(req.params.id)
+        .then((result) => {
+            res.status(200).json(result)
+
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err)
+
+        });
+})
+
+
 
 
 module.exports = router;

@@ -19,7 +19,10 @@ router.post('/add', (req,res) => {
 });
 router.get('/getall', (req, res) => {
     res.send('Response from user getall');
+    
 });
+
+
 
 
 module.exports = router;

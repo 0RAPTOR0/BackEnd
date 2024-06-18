@@ -6,6 +6,10 @@ const mySchema = new Schema({
     user : String,
     like : { type : Number, default : 0 },
     shares : { type : Number, default : 0 }
+
+    
+    
 });
+
 
 module.exports = model('feeds', mySchema)
